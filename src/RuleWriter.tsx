@@ -40,7 +40,6 @@ export const RuleWriter: FC = () => {
             <td><button onClick={}>X</button></td>
           </tr>
         </table>
-        <
       </div>
     </div>
   );
