@@ -1,0 +1,14 @@
+#editor .tui-colorpicker-palette-hex {
+  width: 80px;
+}
+
+#editor .tui-popup-color button.te-apply-button {
+  color: #000000;
+  height: 26px;
+  position: initial;
+}
+
+#editor .tui-popup-color .tui-colorpicker-container .tui-colorpicker-palette-preview {
+  width: 26px;
+  height: 26px;
+}
