@@ -37,7 +37,7 @@ export const RuleWriter: FC = () => {
             <td><input type="text" name="field" /></td>
             <td>{SelectOption()}</td>
             <td><input type="text" name="value" /></td>
-            <td><button onClick={}>X</button></td>
+            <td><button>X</button></td>
           </tr>
         </table>
       </div>
