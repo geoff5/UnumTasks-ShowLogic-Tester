@@ -19,7 +19,7 @@ const selectOptionField = (response: any) => {
       <>
         <option value="default" selected>Default</option>
         {response.items.map((i: any) => (
-          <option value={i.elements.label.value}>{i.elements.label.value}</option>
+          <option value={i.system.codename}>{i.system.codename}</option>
         ))}
       </>
     )
