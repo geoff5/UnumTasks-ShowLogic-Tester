@@ -2,24 +2,26 @@ import React from 'react';
 import { rulesMap } from './maps';
 import { DeliveryClient } from '@kontent-ai/delivery-sdk';
 import { FC, useEffect } from 'react';
+import { Formik, Field, Form, FieldArray } from 'formik';
 
-const selectOptionRule = () => { 
+const selectOptionRule = (initialValue: Array<Rule>) => { 
   return (
     <>
-      <option value="is">Is</option>
-      <option value="isNot">Is not</option>
-      <option value="hasValue">Has value</option>
+      <option value="default" selected={!initialValue[0] || !initialValue[0].rule}>Default</option>
+      <option value="is" selected={initialValue[0] !== undefined && initialValue[0].rule !== undefined && initialValue[0].rule === rulesMap['is']}>Is</option>
+      <option value="isNot" selected={initialValue[0] !== undefined && initialValue[0].rule !== undefined && initialValue[0].rule === rulesMap['isNot']}>Is not</option>
+      <option value="hasValue" selected={initialValue[0] !== undefined && initialValue[0].rule !== undefined && initialValue[0].rule === rulesMap['hasValue']}>Has value</option>
     </>
   );
 };
 
-const selectOptionField = (response: any) => {
+const selectOptionField = (response: any, initialValue: Array<Rule>) => {
   if (response && response.items) {
     return(
       <>
-        <option value="default" selected>Default</option>
+        <option value="default" selected={!initialValue[0] || !initialValue[0].field}>Default</option>
         {response.items.map((i: any) => (
-          <option value={i.system.codename}>{i.system.codename}</option>
+          <option value={i.system.codename} selected={initialValue[0] !== undefined && initialValue[0].field !== undefined && initialValue[0].field === i.system.codename}>{i.system.codename}</option>
         ))}
       </>
     )
@@ -45,6 +47,7 @@ export const RuleWriter: FC = () => {
   const [response, setResponse]: any = React.useState(null);
   const [rules, setRules] = React.useState<Array<Rule>>([]);
   const [elementDisabled, setElementDisabled] = React.useState<boolean>(false);
+  const [initialValue, setInitialValue] = React.useState<Array<Rule>>([]);
 
   useEffect(() => {
     CustomElement.setValue(JSON.stringify(rules));
@@ -56,6 +59,7 @@ export const RuleWriter: FC = () => {
       CustomElement.setHeight(350);
       CustomElement.onDisabledChanged(() => console.log(element.disabled));
       setElementDisabled(element.disabled);
+      setInitialValue(JSON.parse(element.value));
 
       getFormElements(context, setResponse);
     });
@@ -103,10 +107,10 @@ export const RuleWriter: FC = () => {
               N/A
             </td>
             <td>
-              <select disabled={elementDisabled} defaultValue="Select a field" name="field" onChange={(e) => setFieldAndCreateRules(e)}>{selectOptionField(response)}</select>
+              <select disabled={elementDisabled} defaultValue="Select a field" name="field" onChange={(e) => setFieldAndCreateRules(e)}>{selectOptionField(response, initialValue)}</select>
             </td>
-            <td><select disabled={elementDisabled} name="rule" onChange={(e) => setFieldAndCreateRules(e)}>{selectOptionRule()}</select></td>
-            <td><input disabled={elementDisabled} type="text" name="value" onChange={(e) => setFieldAndCreateRules(e)} /></td>
+            <td><select disabled={elementDisabled} name="rule" onChange={(e) => setFieldAndCreateRules(e)}>{selectOptionRule(initialValue)}</select></td>
+            <td><input disabled={elementDisabled} type="text" defaultValue={'Default'} name="value" onChange={(e) => setFieldAndCreateRules(e)} /></td>
             <td><button>X</button></td>
           </tr>
         </table>
