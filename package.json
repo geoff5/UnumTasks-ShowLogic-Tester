@@ -27,7 +27,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "generate-models": "cd src/data-models && kontent-generate  --apiKey=ew0KICAiYWxnIjogIkhTMjU2IiwNCiAgInR5cCI6ICJKV1QiDQp9.ew0KICAianRpIjogIjI1NDc0ZDVkNDA5NDQxYjQ5YTk5YTRmOTBlOGY0OGZlIiwNCiAgImlhdCI6ICIxNjgwMTY4NDQ1IiwNCiAgImV4cCI6ICIxNjk2MDY2MDIwIiwNCiAgInZlciI6ICIzLjAuMCIsDQogICJ1aWQiOiAiNjA4YWE0OTUyZjUyMjIwMDY4Y2FiODYwIiwNCiAgInByb2plY3RfY29udGFpbmVyX2lkIjogImUwZTExMDA0NTRjZDAwMTViMDUyNGYwZmNlYzMwZGFiIiwNCiAgImF1ZCI6ICJtYW5hZ2Uua2VudGljb2Nsb3VkLmNvbSINCn0.tt2ZdJqviWlVSNDnD9Uw-6l_dawyigJyWF8bpRD7sMI --projectId=d609bef7-92b0-0090-b74b-e6bda6604f21 --moduleResolution=ES2015 --codeType=TypeScript --strictPropertyInitalization=true"
   },
   "eslintConfig": {
     "extends": [
