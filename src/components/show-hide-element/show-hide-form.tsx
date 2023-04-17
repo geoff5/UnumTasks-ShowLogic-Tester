@@ -373,8 +373,6 @@ export const ShowHideForm: FC = () => {
           )}
         </Formik>
       </div>
-      <div>Saved Rules: {JSON.stringify(rules)}</div>
-      <div>initial Rules: {JSON.stringify(initialValue)}</div>
     </div>
   );
 };

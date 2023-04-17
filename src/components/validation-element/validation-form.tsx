@@ -277,7 +277,7 @@ export const ValidationForm: FC = () => {
                               <Field
                                 name={`validations.${index}.key`}
                                 component={selectOptionRule}
-                                disabled={editMode[index]}
+                                disabled={!editMode[index]}
                                 type={elementType}
                               />
                             </RuleContainer>
@@ -295,7 +295,7 @@ export const ValidationForm: FC = () => {
                                   items={formFields}
                                   comparatorType={values.validations[index].key}
                                   component={selectOptionComparator}
-                                  disabled={editMode[index]}
+                                  disabled={!editMode[index]}
                                 />
                               </RuleContainer>
                             )}
@@ -306,7 +306,7 @@ export const ValidationForm: FC = () => {
                               <Field
                                 required
                                 name={`validations.${index}.message`}
-                                disabled={editMode[index]}
+                                disabled={!editMode[index]}
                               />
                             </RuleContainer>
                             <ButtonContainer>
@@ -316,7 +316,7 @@ export const ValidationForm: FC = () => {
                                 onClick={() =>
                                   removeValidationAndSave(index, remove)
                                 }
-                                disabled={editMode[index]}
+                                disabled={!editMode[index]}
                               >
                                 Delete Rule
                               </button>
@@ -352,8 +352,6 @@ export const ValidationForm: FC = () => {
           )}
         </Formik>
       </div>
-      <div>Saved Validations: {JSON.stringify(validations)}</div>
-      <div>initial Validations: {JSON.stringify(initialValue)}</div>
     </div>
   );
 };
